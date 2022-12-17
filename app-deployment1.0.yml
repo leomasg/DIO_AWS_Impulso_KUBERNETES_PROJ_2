@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-php
+  labels:
+    app: app-php
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-php
+  template:
+    metadata:
+      labels:
+        app: app-php
+    spec:
+      containers:
+      - name: app-php
+        image: leomasg/projeto-app:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
